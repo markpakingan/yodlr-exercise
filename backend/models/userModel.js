@@ -96,6 +96,36 @@ class UserModel{
     }
 
 
+    static async getUser(user_id){
+
+        const query = 
+            "SELECT username, first_name, last_name, email FROM users WHERE user_id = $1";
+
+        const result = await db.query(query, [user_id])
+
+        return result.rows[0]
+    }
+
+    
+    static async updateUser(username, first_name, last_name, email, user_id){
+
+        const query = 
+            "UPDATE users SET username = $1, first_name = $2, last_name = $3, email = $4 WHERE user_id = $5";
+        
+        const result = await db.query(query, [username, first_name, last_name, email, user_id]);
+    };
+
+
+    static async deleteUser(user_id){
+
+        const query = 
+            "DELETE FROM users WHERE user_id = $1"
+  
+
+        const result = await db.query(query, [user_id]);
+
+        return result.rows[0];
+    }
 }
 
 module.exports = UserModel;
