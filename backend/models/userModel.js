@@ -89,7 +89,7 @@ class UserModel{
     static async getAllUsers(){
 
         const result = await db.query(
-            "SELECT username, first_name, last_name, email FROM users ORDER BY username"
+            "SELECT user_id, username, first_name, last_name, email FROM users ORDER BY username"
         )
 
         return result.rows;
