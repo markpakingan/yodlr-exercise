@@ -10,8 +10,11 @@ router.post("/token", async (req, res, next)=>{
         const { username, password } = req.body;
         const user = await UserModel.authenticate(username, password);
         const token = createToken(user);
+        // const isAdmin = user.isAdmin;
 
-        return res.json({ token, user: user.user_id});
+        // return res.json({ token, user: user.user_id});
+        return res.json({token, user});
+
 
     }catch(err){
         console.error("Failed to post token on routes", err);

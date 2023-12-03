@@ -16,7 +16,7 @@ const { authenticateJWT, ensureLoggedIn } = require("./middleware/auth");
 
 app.use(cors());
 
-// app.use(authenticateJWT);
+app.use(authenticateJWT);
 app.use("/user", userRoutes);
 app.use("/auth", authRoutes);
 
